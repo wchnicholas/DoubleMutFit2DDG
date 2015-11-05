@@ -1,0 +1,2 @@
+	InputCount	SelectionCount(SumOfTriplicates)
+WT	1759616	3041819
