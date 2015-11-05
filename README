@@ -1,3 +1,5 @@
+#THIS README FILE IS VERY ROUGH. UPDATES WILL BE MADE. 
+
 #STEP BY STEP PROTOCOL
 python script/Format1.py #fitness of mutation A or B (Potentiation or Landscape) on background mutation; output file = data/MutPotentiation or data/MutLandscapes
 python script/Analyze1.py #Produce a correlation matrix based on single substitution fitness landscape among all mutation backgrounds; output file = data/CorMatrix
