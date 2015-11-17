@@ -54,9 +54,7 @@ def cor(l1,l2):
   return pearsonr(l1_clean,l2_clean)
 
 #READ FILE
-#infile = open('data/BenchMark','r')
 infile = open('data/MutLandscapes','r')
-#infile = open('data/MutPotentiation','r')
 Phash  = {}
 Fhash  = {}
 Dhash  = {}

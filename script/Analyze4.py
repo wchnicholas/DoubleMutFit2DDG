@@ -223,14 +223,14 @@ for line in infile.xreadlines():
   pos  = mut[1:-1]
   fit  = Shash[mut]
   if fit < minfit or fit > maxfit: continue
-  print mut+"\t"+str(fit)
+  #print mut+"\t"+str(fit)
   cor  = map(atof,line[1::])
   mutIDs.append(mut)
   mutfits.append(fit)
   mutcors.append(cor)
   Fhash[mut] = fit
 infile.close()
-sys.exit()#############
+#sys.exit()#############
 #for mutID in mutIDs:
 #  mutID = [mutID]
 #  energy(mutID,Sol)
@@ -261,7 +261,7 @@ for label in H.keys():
   BGs   = H[label]
   if len(BGs) > 3: #4
     r, s, g, h, f = energy(BGs,Sol)
-    print k, r, s, '-'.join(BGs)
+    #print k, r, s, '-'.join(BGs)
     if s < lowests: #Sol 
     #if h < lowests: #Hydrophobicity Scale 
     #if f < lowests: #Fitness Scale
@@ -270,4 +270,4 @@ for label in H.keys():
       #lowests = f
       outputr = r
       finalg  = g
-#print k, outputr, lowests, finalg #NEED THIS FOR OUTPUT
+print k, outputr, lowests, finalg #NEED THIS FOR OUTPUT

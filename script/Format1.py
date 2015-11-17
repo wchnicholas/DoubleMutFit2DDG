@@ -61,7 +61,7 @@ def extractDM(Shash,Dhash,outfile):
       elif Dhash.has_key(mut2+'-'+mut1): Dmut = mut2+'-'+mut1
       if Dmut != '':
         #fit = fit2energy(cap(floor(atof(Dhash[Dmut]))))/Smut1Fit/Smut2Fit*Shash[mut1] #
-        fit = Dhash[Dmut]/Shash[mut2] #Another way of calculating, this way without capping and flooring matches anders
+        #fit = Dhash[Dmut]/Shash[mut2] #Another way of calculating, this way without capping and flooring matches anders
         if fit >= 1 or fit <= 0: fit = 'NA'
         else: fit = -1.9858775*296/1000*log((1-fit)/fit) - (-1.9858775*296/1000*log((1-Shash[mut1])/Shash[mut1])) #
       else: fit = 'NA'
