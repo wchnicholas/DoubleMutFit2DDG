@@ -3,9 +3,19 @@ This readme describes the scripts used for the analyses in:
 * Explanation of relevant files for the analyses in the paper is provided (see section "FILE DESCRIPTIONSn")
 * Other scripts/files that are not used for the analyses in the paper. They were generated during "idea testing" stage of the project. Some of them are described (see section "OTHER SCRIPTS")
 
-#FILES
-* doc/SMutList:  Single mutant read count from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
-* doc/DMutList:  Double mutant read count from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
+#FILE DESCRIPTIONS
+* doc/SMutList:  Single substitution data from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
+* doc/DMutList:  Double substitution data from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
+* data/SingleECor: All correlation (R\_literature, SASA, fitness) for background mutation with non-zero and < 1 fitness
+* data/n4to8Sim: Simulation result using minfit = 0.4, maxfit = 0.8, k ranges from 1 to 50, 100 different seedings
+* data/MutLandscapes: DDG of unfolding of mutation B (column name) based on S\_BG (i.e. mutation A, row name). Also see equation 11 in the paper
+* data/LandCorMatrix: A symmetric matrix that states the Pearson correlation coefficient between the mutational energy profile computed based on different S\_BG
+* data/LandhcMatrix: Hierachy clustering of the S\_BG based on the correlation matrix (LandCorMatrix). Values are the Pearson correlation coefficient. This file is basically a rearrangement of data/LandCorMatrix
+* Doc/LiteratureE: 84 DDG from Literature as benchmark. Two of them (A44R, and A53E) are not used in this study due to the mismatch of WT amino acid. The first column is the substitution identity and the second column is the DDG value from Literature. 
+* Doc/Rosetta1PGA: Output from Rosetta DDG\_monomer prediction using 1PGA as input
+* Doc/HydrophobicityScale: Hydrophobicity scales for different amino acids. Hopp-Woods scale (Third column) was used for this study.
+* Doc/Scale1: A proposed scale as a function of amino acid size and Hydrophobicity scales. This was generated during idea testing stage but were not used for the final version of analysis in this study (variable f in line 263 of Analysis4.py).
+* Doc/1PGA.sol: RSA of each residue on Protein GB 1 (based on 1PGA).
 
 #STEP BY STEP PROTOCOL
 1. python script/Format1.py: fitness of mutation A or B (Potentiation or Landscape) on background mutation
@@ -37,19 +47,6 @@ This readme describes the scripts used for the analyses in:
   * script/Sim1.sh allows iterate run with different k and random seeding
   * script/tmp.sh allows parsing the output of Sim1.sh to search for S\_BGgroup with highest meanRSA within a given k among different random seeding
 
-#FILE DESCRIPTIONS
-data/SingleECor: All correlation (R_literature, SASA, fitness) for background mutation with non-zero and < 1 fitness
-data/n4to8Sim: Simulation result using minfit = 0.4, maxfit = 0.8, k ranges from 1 to 50, 100 different seedings
-Doc/SMutList: Single substitution data from (Olson et al. PMID: 25455030)
-Doc/DMutList: Double substitution data from (Olson et al. PMID: 25455030)
-data/MutLandscapes: DDG of unfolding of mutation B (column name) based on S_BG (i.e. mutation A, row name). Also see equation 11 in the paper
-data/LandCorMatrix: A symmetric matrix that states the Pearson correlation coefficient between the mutational energy profile computed based on different S_BG
-data/LandhcMatrix: Hierachy clustering of the S_BG based on the correlation matrix (LandCorMatrix). Values are the Pearson correlation coefficient. This file is basically a rearrangement of data/LandCorMatrix
-Doc/LiteratureE: 84 DDG from Literature as benchmark. Two of them (A44R, and A53E) are not used in this study due to the mismatch of WT amino acid. The first column is the substitution identity and the second column is the DDG value from Literature. 
-Doc/Rosetta1PGA: Output from Rosetta DDG_monomer prediction using 1PGA as input
-Doc/HydrophobicityScale: Hydrophobicity scales for different amino acids. Hopp-Woods scale (Third column) was used for this study.
-Doc/Scale1: A proposed scale as a function of amino acid size and Hydrophobicity scales. This was generated during idea testing stage but were not used for the final version of analysis in this study (variable f in line 263 of Analysis4.py).
-Doc/1PGA.sol: RSA of each residue on Protein GB 1 (based on 1PGA).
 
 #OTHER SCRIPTS
 
