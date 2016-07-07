@@ -1,41 +1,43 @@
-THIS README DESCRIBES THE SCRIPTS (SEE "STEP BY STEP PROTOCOL") USED FOR THE ANALYSES IN:  
+This readme describes the scripts used for the analyses in:  
 [High-throughput identification of protein mutant stability computed from a double mutant fitness landscape](http://onlinelibrary.wiley.com/doi/10.1002/pro.2840/full)
+* Explanation of relevant files for the analyses in the paper is provided (see section "FILE DESCRIPTIONSn")
+* Other scripts/files that are not used for the analyses in the paper. They were generated during "idea testing" stage of the project. Some of them are described (see section "OTHER SCRIPTS")
 
-#EXPLANATION OF RELEVANT FILES FOR THE ANALYSES IN THE PAPER ARE PROVIDED (SEE "FILE DESCRIPTION")
-#OTHER SCRIPTS/FILES ARE NOT USED FOR THE ANALYSES IN THE PAPER. THEY WERE GENERATED DURING "IDEA TESTING" STAGE OF THE PROJECT. SOME OF THEM ARE DESCRIBED (SEE "OTHER SCRIPTS"). 
+#FILES
+* doc/SMutList:  Single mutant read count from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
+* doc/DMutList:  Double mutant read count from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
 
-#################################################################
-#####################STEP BY STEP PROTOCOL#######################
-#################################################################
-#fitness of mutation A or B (Potentiation or Landscape) on background mutation; output file = data/MutPotentiation or data/MutLandscapes
-#Input file: Doc/DMutList and Doc/SMutList
-#Output file: data/MutLandscapes
-python script/Format1.py
+#STEP BY STEP PROTOCOL
+1. python script/Format1.py: fitness of mutation A or B (Potentiation or Landscape) on background mutation
+  * Input file:
+    * Doc/DMutList
+    * Doc/SMutList
+  * Output file: data/MutLandscapes
 
-#Produce a correlation matrix based on single substitution fitness landscape among all mutation backgrounds; output file = data/CorMatrix
-#Input file: data/MutLandscapes
-#Output file: data/LandCorMatrix
-python script/Analyze1.py
+2. python script/Analyze1.py: Produce a correlation matrix based on single substitution fitness landscape among all mutation backgrounds
+  * Input file: data/MutLandscapes
+  * Output file: data/LandCorMatrix
 
-#Plot a heatmap by clustering mutation background based on fitness landscape similarity; output file = data/hcMatrix
-#Input file: data/LandCorMatrix
-#Output file: data/LandhcMatrix, graph/LandCorHeatmap.png
-R CMD BATCH script/Heatmap1.R
+3. R CMD BATCH script/Heatmap1.R: Plot a heatmap by clustering mutation background based on fitness landscape similarity
+  * Input file: data/LandCorMatrix
+  * Output file: 
+    * data/LandhcMatrix
+    * graph/LandCorHeatmap.png
 
-#Simulation to generate correlating cluster, and some other functions to generate hit result
-#This script will produce a standard output arranged as: [k]\t[Rliterature]\t[meanRSA]\t[S_BGgroup]
-#Fitness range filtering of S_BG can be controled by varaibles minfit and maxfit in line 216 and 217. 
-#script/Sim1.sh allows iterate run with different k and random seeding
-#script/tmp.sh allows parsing the output of Sim1.sh to search for S_BGgroup with highest meanRSA within a given k among different random seeding
-#Input file: Doc/SMutList, data/MutLandscapes, Doc/LiteratureE, Doc/Rosetta1PGA, Doc/HydrophobicityScale, Doc/Scale1, Doc/1PGA.sol, data/LandCorMatrix
-python script/Analyze4.py [k] [RANDOM SEED]
+4. python script/Analyze4.py [k] [RANDOM SEED]: Simulation to generate correlating cluster, and some other functions to generate hit result. This script will produce a standard output arranged as: [k]\t[Rliterature]\t[meanRSA]\t[S\_BGgroup]. Fitness range filtering of S\_BG can be controled by varaibles minfit and maxfit in line 216 and 217. 
+  * Input file:
+    * Doc/SMutList
+    * data/MutLandscapes
+    * Doc/LiteratureE
+    * Doc/Rosetta1PGA
+    * Doc/HydrophobicityScale
+    * Doc/Scale1
+    * Doc/1PGA.sol
+    * data/LandCorMatrix
+  * script/Sim1.sh allows iterate run with different k and random seeding
+  * script/tmp.sh allows parsing the output of Sim1.sh to search for S\_BGgroup with highest meanRSA within a given k among different random seeding
 
-#-----------------END OF STEP BY STEP PROTOCOL------------------#
-
-
-#################################################################
-########################FILE DESCRIPTION#########################
-#################################################################
+#FILE DESCRIPTIONS
 data/SingleECor: All correlation (R_literature, SASA, fitness) for background mutation with non-zero and < 1 fitness
 data/n4to8Sim: Simulation result using minfit = 0.4, maxfit = 0.8, k ranges from 1 to 50, 100 different seedings
 Doc/SMutList: Single substitution data from (Olson et al. PMID: 25455030)
@@ -49,11 +51,7 @@ Doc/HydrophobicityScale: Hydrophobicity scales for different amino acids. Hopp-W
 Doc/Scale1: A proposed scale as a function of amino acid size and Hydrophobicity scales. This was generated during idea testing stage but were not used for the final version of analysis in this study (variable f in line 263 of Analysis4.py).
 Doc/1PGA.sol: RSA of each residue on Protein GB 1 (based on 1PGA).
 
-#-------------------END OF FILE DESCRIPTION---------------------#
-
-#################################################################
-#########################OTHER SCRIPTS###########################
-#################################################################
+#OTHER SCRIPTS
 
 #Plot a heatmap by distance based on the clustering in data/hcMatrix
 #Input file: data/LanddisMatrix
