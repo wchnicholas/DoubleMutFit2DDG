@@ -1,6 +1,7 @@
 This readme describes the scripts used for the analyses in:  
 [High-throughput identification of protein mutant stability computed from a double mutant fitness landscape](http://onlinelibrary.wiley.com/doi/10.1002/pro.2840/full)
-* Explanation of relevant files for the analyses in the paper is provided (see section "FILE DESCRIPTIONSn")
+* Explanation of relevant files for the analyses in the paper is provided (see section "FILE DESCRIPTIONS")
+* Protocol for running the analysis is described (see section "STEP BY STEP PROTOCOL")
 * Other scripts/files that are not used for the analyses in the paper. They were generated during "idea testing" stage of the project. Some of them are described (see section "OTHER SCRIPTS")
 
 #FILE DESCRIPTIONS
@@ -49,30 +50,29 @@ This readme describes the scripts used for the analyses in:
 
 
 #OTHER SCRIPTS
+script/Heatmap2.R: Plot a heatmap by distance based on the clustering in data/hcMatrix
+  * Input file: data/LanddisMatrix
+  * Output file: graph/LandDisHeatMap.png
 
-#Plot a heatmap by distance based on the clustering in data/hcMatrix
-#Input file: data/LanddisMatrix
-#Output file: graph/LandDisHeatMap.png
-R CMD BATCH script/Heatmap2.R
+script/Format2.py: Format Distance matrix according to the clustering in data/hcMatrix
+  * Input file:
+    * Doc/distance
+    * data/LandhcMatrix
+  * Output file: data/LanddisMatrix
 
-#Format Distance matrix according to the clustering in data/hcMatrix; output file = data/disMatrix
-#Input file: Doc/distance, data/LandhcMatrix
-#Output file: data/LanddisMatrix
-python script/Format2.py
+script/Analyze5.py: Generate position correlation matrix by propensity
+  * Inout file: data/Hit2result
+  * Output file: data/PropCorMatrix
 
-#Generate position correlation matrix by propensity
-#Inout file: data/Hit2result'
-#Output file: data/PropCorMatrix
-python script/Analyze5.py
+script/Heatmap3.R: Plot a heatmap by distance based on the clustering in data/PropCorMatrix 
+  * Input file: data/PropCorMatrix
+  * Output file: 
+    * data/PropCorhc 
+    * graph/PropCor.png
 
-#Plot a heatmap by distance based on the clustering in data/PropCorMatrix 
-#Input file: data/PropCorMatrix
-#Output file: data/PropCorhc, graph/PropCor.png
-R CMD BATCH script/Heatmap3.R
-
-#Generate a compile table that contains the secondary structure classification (SS), and RSA (based on 1PGA) infomration for each residue. 
-#Input file: Doc/1PGA.SS, data/PropCorhc, Doc/1PGA.sol
-#Output file: data/PropInfo
-python script/Analyze6.py
-
-#---------------------END OF OTHER SCRIPTS----------------------#
+script/Analyze6.py: Generate a compile table that contains the secondary structure classification (SS), and RSA (based on 1PGA) infomration for each residue. 
+  * Input file: 
+    * Doc/1PGA.SS
+    * data/PropCorhc
+    * Doc/1PGA.sol
+  * Output file: data/PropInfo
