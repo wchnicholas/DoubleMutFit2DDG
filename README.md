@@ -4,7 +4,7 @@ This readme describes the scripts used for the analyses in:
 * Protocol for running the analysis is described (see section "STEP BY STEP PROTOCOL")
 * Other scripts/files that are not used for the analyses in the paper. They were generated during "idea testing" stage of the project. Some of them are described (see section "OTHER SCRIPTS")
 
-#FILE DESCRIPTIONS
+##FILE DESCRIPTIONS
 * doc/SMutList:  Single substitution data from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
 * doc/DMutList:  Double substitution data from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
 * data/SingleECor: All correlation (R\_literature, SASA, fitness) for background mutation with non-zero and < 1 fitness
@@ -18,7 +18,7 @@ This readme describes the scripts used for the analyses in:
 * Doc/Scale1: A proposed scale as a function of amino acid size and Hydrophobicity scales. This was generated during idea testing stage but were not used for the final version of analysis in this study (variable f in line 263 of Analysis4.py).
 * Doc/1PGA.sol: RSA of each residue on Protein GB 1 (based on 1PGA).
 
-#STEP BY STEP PROTOCOL
+##STEP BY STEP PROTOCOL
 1. python script/Format1.py: fitness of mutation A or B (Potentiation or Landscape) on background mutation
   * Input file:
     * Doc/DMutList
@@ -49,7 +49,7 @@ This readme describes the scripts used for the analyses in:
   * script/tmp.sh allows parsing the output of Sim1.sh to search for S\_BGgroup with highest meanRSA within a given k among different random seeding
 
 
-#OTHER SCRIPTS
+##OTHER SCRIPTS
 script/Heatmap2.R: Plot a heatmap by distance based on the clustering in data/hcMatrix
   * Input file: data/LanddisMatrix
   * Output file: graph/LandDisHeatMap.png
