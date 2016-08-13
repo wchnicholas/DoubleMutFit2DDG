@@ -12,7 +12,7 @@ This readme describes the scripts used for the analyses in:
 * data/MutLandscapes: DDG of unfolding of mutation B (column name) based on S\_BG (i.e. mutation A, row name). Also see equation 11 in the paper
 * data/LandCorMatrix: A symmetric matrix that states the Pearson correlation coefficient between the mutational energy profile computed based on different S\_BG
 * data/LandhcMatrix: Hierachy clustering of the S\_BG based on the correlation matrix (LandCorMatrix). Values are the Pearson correlation coefficient. This file is basically a rearrangement of data/LandCorMatrix
-* Doc/LiteratureE: 84 DDG from Literature as benchmark. Two of them (A44R, and A53E) are not used in this study due to the mismatch of WT amino acid. The first column is the substitution identity and the second column is the DDG value from Literature. 
+* Doc/LiteratureE: 84 DDG from Literature as benchmark. Two of them (A44R, and A53E) are not used in this study due to the mismatch of WT amino acid. The first column is the substitution identity and the second column is the DDG value from Literature. This table is the same as Table S4 from [Olson et al. 2014](http://www.cell.com/current-biology/abstract/S0960-9822(14)01268-8)
 * Doc/Rosetta1PGA: Output from Rosetta DDG\_monomer prediction using 1PGA as input
 * Doc/HydrophobicityScale: Hydrophobicity scales for different amino acids. Hopp-Woods scale (Third column) was used for this study.
 * Doc/Scale1: A proposed scale as a function of amino acid size and Hydrophobicity scales. This was generated during idea testing stage but were not used for the final version of analysis in this study (variable f in line 263 of Analysis4.py).
