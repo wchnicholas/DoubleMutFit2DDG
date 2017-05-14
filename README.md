@@ -1,4 +1,4 @@
-This readme describes the scripts used for the analyses in:  
+This README describes the scripts used for the analyses in:  
 [High-throughput identification of protein mutant stability computed from a double mutant fitness landscape](http://onlinelibrary.wiley.com/doi/10.1002/pro.2840/full)
 * Explanation of relevant files for the analyses in the paper is provided (see section "FILE DESCRIPTIONS")
 * Protocol for running the analysis is described (see section "STEP BY STEP PROTOCOL")
